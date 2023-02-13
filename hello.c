@@ -2,29 +2,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 int main(void)
 {
-	int i, ans=0;
-	printf("산수 문제를 자동으로 출제합니다\n");
+	int n, is_prime;
+	printf("어디까지 탐색하시겠습니까? : ");
+	scanf("%d", &n);
 
-	while (1) {
-		int x = rand() % 100;
-		int y = rand() % 100;
-		printf("%d + %d = ", x, y);
-		scanf("%d", &ans);
-
-		if (x + y == ans) {
-			printf("맞았습니다\n");
-			break;
+	for (int i = 2; i <= n; i++) {
+		is_prime = 1;	// 일단 소수라고 가정한다.
+		for (int k = 2; k < i; k++) {
+			if (i % k == 0) {
+				is_prime = 0;	// k로 나누어 떨어지면 소수가 아니다.
+				break;
+			}
 		}
-		else {
-			printf("틀렸습니다\n");
+		if (is_prime == 1) {
+			printf("%d ", i);	// 소수이면 출력
+
 		}
 	}
 	return 0;
 }
-
-
-
-
